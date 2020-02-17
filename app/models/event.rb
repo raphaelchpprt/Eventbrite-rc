@@ -5,10 +5,10 @@ class Event < ApplicationRecord
 
   validates :start_date,
     presence: true,
-
+  validate :must_be_upcoming
   validates :duration,
     presence: true,
-    numericality: { only_integer: true }
+    numericality: { only_integer: true, greater_than: 0 }
   validate :duration_must_be_multiple_of_five
   validates :title,
     presence: true,
@@ -22,11 +22,17 @@ class Event < ApplicationRecord
   validates :location,
     presence: true
   
-  def duration_must_be_multiple_of_five
-    unless duration % 5 == 0
-        errors.add(:duration, "must be multiple of 5")
+  def must_be_upcoming
+    unless start_date > Time.now
+      errors.add(:start_date, "must be upcoming")
     end
   end
   
+  def duration_must_be_multiple_of_five
+    unless duration % 5 == 0
+      errors.add(:duration, "must be multiple of 5")
+    end
+  end
+
 end
 

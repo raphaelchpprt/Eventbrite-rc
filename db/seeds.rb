@@ -9,11 +9,11 @@
 
 User.destroy_all
 
-10.times do |user|
-  User.create!(
-    id: User.all.index(user),
+10.times do
+  user = User.create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
     description: Faker::Lorem.paragraph(sentence_count: 3),
   )
+  user.email = user.first_name.downcase + user.last_name.downcase + "@yopmail.com"
 end
