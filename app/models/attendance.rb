@@ -8,6 +8,6 @@ class Attendance < ApplicationRecord
   after_create :confirmation_send
 
   def confirmation_send
-    UserMailer.welcome_email(self).deliver_now
+    AttendanceMailer.confirmation_email(self).deliver_now
   end
 end
