@@ -5,7 +5,7 @@ class Event < ApplicationRecord
 
   validates :start_date,
     presence: true
-  validate :must_be_upcoming
+  validate :event_must_be_upcoming
   validates :duration,
     presence: true,
     numericality: { only_integer: true, greater_than: 0 }
@@ -22,7 +22,7 @@ class Event < ApplicationRecord
   validates :location,
     presence: true
   
-  def must_be_upcoming
+  def event_must_be_upcoming
     unless start_date > Time.now
       errors.add(:start_date, "must be upcoming")
     end
