@@ -1,15 +1,63 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Eventbrite</title>
+    <title>🗓 Eventbrite</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+
+
   </head>
 
   <body>
-    <%= yield %>
+ 
+      <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" <%= link_to "🗓", root_path %></a>
+        <a class="navbar-brand" <%= link_to "Eventbrite", root_path %></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Créer un événement<span class="sr-only">(current)</span></a>
+            </li>
+          </ul>
+        </div>
+
+        <% if user_signed_in? %>
+          <%= link_to "Se déconnecter", destroy_user_session_path, 
+          method: :delete, :class => "btn btn-danger my-2 my-sm-0" %>
+        <% else %>
+          <%= link_to "S'inscrire", new_user_registration_path,
+          {:class => "btn btn-light my-2 my-sm-0", :style => "margin-right: 10px;"} %>
+
+          <%= link_to "Se connecter", new_user_session_path, 
+          :class => "btn btn-outline-light my-2 my-sm-0" %>
+        <% end %>
+
+      </nav>
+
+
+    <div id="zero">
+      <%= yield %>
+    </div>
+    <div class="container-fluid">
+      <br><br>
+      <hr class="style1">
+      <div class="container">
+        <small class="text-muted">The Gossipe Project © 2020</p>
+      </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>
+
