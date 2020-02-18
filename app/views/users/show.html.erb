@@ -12,21 +12,19 @@
   <br><br>
   <h3>Voici les événements que vous avez créés : </h3><br>
   <div class="row">
-    <% if @events != nil %>
-      <% @events.each do |event| %>
-        <div class="col-sm-4">
-          <div class="card bg-light mb-3">
-            <div class="card-body">
-              <h5 class="card-title"><strong><%= event.title %></h5></strong>
-              <hr class="style1">
-              <p class="card-text"><strong>Date :</strong> <%= event.start_date %><br>
-              <strong>Durée :</strong> <%= event.duration %> mins</p>
-              <strong>Lieu :</strong> <%= event.location %></p>
-              <%= link_to "Plus d'information", event_path(event.id), :class => "btn btn-primary" %>
-            </div>
+    <% @events.each do |event| %>
+      <div class="col-sm-4">
+        <div class="card bg-light mb-3">
+          <div class="card-body">
+            <h5 class="card-title"><strong><%= event.title %></h5></strong>
+            <hr class="style1">
+            <p class="card-text"><strong>Date :</strong> <%= event.start_date %><br>
+            <strong>Durée :</strong> <%= event.duration %> mins</p>
+            <strong>Lieu :</strong> <%= event.location %></p>
+            <%= link_to "Plus d'information", event_path(event.id), :class => "btn btn-primary" %>
           </div>
         </div>
-      <% end %>
+      </div>
     <% end %>
   </div>
 </div>
