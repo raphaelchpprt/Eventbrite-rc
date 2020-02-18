@@ -1,2 +1,30 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<div class="container"><br><br><br>
+  <h1>MON PROFIL</h1>
+  <hr class="style1"><br>
+  <div class="card" id="two">
+    <h2>Nom : <strong><%= current_user.first_name %> <%= current_user.last_name %></strong></h2>
+    <p><br>
+      <b>Description :</b> "<%= current_user.description %>"<br/>
+      <b>Email :</b> <%= mail_to current_user.email %><br/>
+    </p>
+    <%= link_to "Modifier le profil", edit_user_registration_path(current_user), :class => "btn btn-primary" %>
+  </div>
+  <br><br>
+  <h3>Voici les événements que vous avez créés : </h3><br>
+  <div class="row">
+    <% @events.each do |event| %>
+      <div class="col-sm-4">
+        <div class="card bg-light mb-3">
+          <div class="card-body">
+            <h5 class="card-title"><strong><%= event.title %></h5></strong>
+            <hr class="style1">
+            <p class="card-text"><strong>Date :</strong> <%= event.start_date %><br>
+            <strong>Durée :</strong> <%= event.duration %> mins</p>
+            <strong>Lieu :</strong> <%= event.location %></p>
+            <%= link_to "Plus d'information", event_path(event.id), :class => "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

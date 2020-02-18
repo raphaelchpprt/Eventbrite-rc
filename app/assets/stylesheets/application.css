@@ -16,5 +16,12 @@
 
  .jumbotron {
   height: 450px;
-  
+ }
+
+ #two {
+   padding : 40px
+ }
+
+ .container{
+   margin-top: 80px;
  }

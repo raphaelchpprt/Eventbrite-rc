@@ -1,3 +1,4 @@
 <div class="container">
   <h1><br><br><br>Evénement créé par <%= @event.admin.first_name %> <%= @event.admin.last_name %></h1>
+  <%= link_to "Voir le profil", user_path(@event.admin.id), :class => "btn btn-primary" %>
 </div>
