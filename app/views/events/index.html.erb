@@ -1,2 +1,33 @@
-<h1>Events#index</h1>
-<p>Find me in app/views/events/index.html.erb</p>
+<div class="jumbotron">
+  <div class="container">
+    <p><br><br></p>
+    <%if current_user%>
+      <h1 class="display-4"></strong>Bienvenue <strong><%= current_user.email %> <%= current_user.last_name %></strong></strong></h1>
+    <% else %>
+    <h1 class="display-4"></strong>Bienvenue sur <strong>Evenbrite</strong></strong></h1>
+    <% end %>
+    <hr class="style1"><br>
+    <p class="lead"><strong>Désires-tu créer un nouveau événement ?</strong></p>
+    <%= link_to "Créer un événement", new_event_path, :class => "btn btn-primary" %>
+  </div>
+</div>
+
+<div class="container"><br>
+  <h1>Voici les événements déjà existants : </h1><br>
+  <div class="row">
+    <% @events.each do |event| %>
+      <div class="col-sm-4">
+        <div class="card bg-light mb-3">
+          <div class="card-body">
+            <h5 class="card-title"><strong><%= event.title %></h5></strong>
+            <hr class="style1">
+            <p class="card-text"><strong>Date :</strong> <%= event.start_date %><br>
+            <strong>Durée :</strong> <%= event.duration %> mins</p>
+            <strong>Lieu :</strong> <%= event.location %></p>
+            <%= link_to "Plus d'information", event_path(event.id), :class => "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
