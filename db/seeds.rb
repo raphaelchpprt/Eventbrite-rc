@@ -23,7 +23,7 @@ b=1
 end
 
 
-multiple_of_five = [5, 10, 15, 20, 25, 30, 35, 40]
+multiple_of_five = [5, 10, 15, 20, 25, 30, 35, 40, 45, 50, 55, 60]
 a=1
 20.times do
   Event.create!(
@@ -33,7 +33,7 @@ a=1
     description: Faker::Lorem.paragraph,
     price: Faker::Number.between(from: 20, to: 1000),
     location: Faker::Address.city,
-    admin_id: rand(User.first.id..User.last.id)
+    admin: User.all.sample
   )
 a+=1
 end
