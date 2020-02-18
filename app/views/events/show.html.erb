@@ -5,10 +5,11 @@
   <br><br>
   <h5><strong><%= @event.title %></h5></strong>
     <hr class="style1">
-    <p>Date : <%= @event.start_date %><br>
-    Durée : <%= @event.duration %><br>
-    Prix : <%= @event.price %><br>
+    <p>Date de début : <%= @event.start_date %><br>
+    Date de fin : <%=@event.start_date + @event.duration*60%><br>
+    Prix : <%= @event.price %> €<br>
     Lieu : <%= @event.location %><br>
-    Description : <%= @event.description %></p>
+    Description : <%= @event.description %><br>
+    Nombre d'inscrits : <%= @event.attendances.count %></p>
     </div>
 </div>
