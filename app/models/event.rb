@@ -23,14 +23,18 @@ class Event < ApplicationRecord
     presence: true
   
   def event_must_be_upcoming
-    unless start_date > Time.now
-      errors.add(:start_date, "must be upcoming")
+    if start_date.present?
+      unless start_date > Time.now
+        errors.add(:start_date, "must be upcoming")
+      end
     end
   end
   
   def duration_must_be_multiple_of_five
-    unless duration % 5 == 0
-      errors.add(:duration, "must be multiple of 5")
+    if duration.present?
+      unless duration % 5 == 0
+        errors.add(:duration, "must be multiple of 5")
+      end
     end
   end
 

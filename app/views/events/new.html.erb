@@ -1,3 +1,46 @@
-<div class="container">
-  <h1>hello</h1>
-</div>
+<div class="container">      
+    <h1> CRÉATION D'UN NOUVEL ÉVÉNEMENT</h1>
+    <hr class="style1"><br />
+
+    <% if @event.errors.any? %>
+      <div class="alert alert-danger" role="alert">
+        <br>
+        <p>❌&nbsp;&nbsp;Nous n'avons pas réussi à créer l'événement pour la (ou les) raison(s) suivante(s) :</p>
+        <ul>
+          <% @event.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      <br>
+      </div>
+    <% end %>
+
+    <%= form_tag events_path, method: "POST" do %>
+      <div class="form-group mb-2">
+        <%= text_field_tag :title, params[:title], class: 'form-control col-sm-3', placeholder: 'Titre* (entre 5 et 140 charactères)' %>
+      </div>
+      <br>
+      <div class="form-group mb-2">
+        <%= text_field_tag :start_date, params[:start_date], class: 'form-control col-sm-5', placeholder: 'Date* (au format : YYYY-MM-DD HH:MM:SS)' %>
+      </div>
+      <br>
+      <div class="form-group mb-2">
+        <%= text_field_tag :duration, params[:duration], class: 'form-control col-sm-5', placeholder: 'Durée* (nombre de minutes finissant par 0 ou 5)' %>
+      </div>
+      <br>
+      <div class="form-group mb-2">
+        <%= text_field_tag :price, params[:price], class: 'form-control col-sm-3', placeholder: 'Prix* (entre 1 et 1000 euros)' %>
+      </div>
+      <br>
+       <div class="form-group mb-2">
+        <%= text_field_tag :location, params[:location], class: 'form-control col-sm-3', placeholder: 'Lieu*' %>
+      </div>
+      <br>
+      <div class="form-group">
+        <%= text_area_tag :description, params[:description], class: 'form-control col-sm-7', placeholder: 'Description*' %>
+      </div>
+      <br>
+        <%= submit_tag "Créer l'événement", class: 'btn btn-primary' %>
+
+    <% end %>
+  </div>

@@ -1,4 +1,14 @@
 <div class="container">
-  <h1><br><br><br>Evénement créé par <%= @event.admin.first_name %> <%= @event.admin.last_name %></h1>
+  <h1>Evénement créé par <%= @event.admin.email %></h1>
+
   <%= link_to "Voir le profil", user_path(@event.admin.id), :class => "btn btn-primary" %>
+  <br><br>
+  <h5><strong><%= @event.title %></h5></strong>
+    <hr class="style1">
+    <p>Date : <%= @event.start_date %><br>
+    Durée : <%= @event.duration %><br>
+    Prix : <%= @event.price %><br>
+    Lieu : <%= @event.location %><br>
+    Description : <%= @event.description %></p>
+    </div>
 </div>
