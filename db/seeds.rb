@@ -33,7 +33,7 @@ a=1
     description: Faker::Lorem.paragraph,
     price: Faker::Number.between(from: 20, to: 1000),
     location: Faker::Address.city,
-    admin_id: 105
+    admin: User.all.sample
   )
 a+=1
 end
