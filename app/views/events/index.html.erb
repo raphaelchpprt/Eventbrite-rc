@@ -1,18 +1,17 @@
-<div class="jumbotron">
+<div class="jumbotron" style="background-image: url(https://images.unsplash.com/photo-1545128485-c400e7702796?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80)">
   <div class="container">
     <%if current_user%>
       <h1 class="display-4"></strong>Bienvenue <strong><%= current_user.email %> <%= current_user.last_name %></strong></strong></h1>
     <% else %>
-    <h1 class="display-4"></strong>Bienvenue sur <strong>Evenbrite</strong></strong></h1>
-    <% end %>
-    <hr class="style1"><br>
+    <h1 class="display-4"></strong>Bienvenue sur <strong><strong>Evenbrite</strong></strong></strong></h1>
+    <% end %><br><br>
     <p class="lead"><strong>Désires-tu créer un nouveau événement ?</strong></p>
     <%= link_to "Créer un événement", new_event_path, :class => "btn btn-primary" %>
   </div>
 </div>
 
 <div class="container"><br>
-  <h1>Voici les événements déjà existants : </h1><br>
+  <h1>Voici les événements qui existent déjà : </h1><br>
   <div class="row">
     <% @events.each do |event| %>
       <div class="col-sm-4">
